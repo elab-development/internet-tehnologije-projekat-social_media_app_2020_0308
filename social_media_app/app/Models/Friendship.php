@@ -14,4 +14,13 @@ class Friendship extends Model
         'user_two_id',
     ];
 
+    public function userOne()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function userTwo()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
