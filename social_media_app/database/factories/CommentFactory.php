@@ -22,7 +22,7 @@ class CommentFactory extends Factory
         return [
             'name' => $this->faker->word()." ".$this->faker->word(),
             'text' => $this->faker->sentence(),
-            'dateAndTime' => $this->faker->timestamp(),
+            'dateAndTime' => $this->faker->dateTimeBetween('-20 days', 'now'),
             'numberOfLikes' => $this->faker->numberBetween($min = 0, $max = 3000),
             'user_id' => User::factory(), 
             'post_id' => Post::factory(), 

@@ -24,7 +24,7 @@ class PostFactory extends Factory
             'image' => $this->faker->imageUrl(),
             'description' => $this->faker->paragraph(),
             'location' => $this->faker->city().", ".$this->faker->streetAddress(),
-            'dateAndTime' => $this->faker->timestamp(),
+            'dateAndTime' => $this->faker->dateTimeBetween('-20 days', 'now'),
             'numberOfLikes' => $this->faker->numberBetween($min = 0, $max = 30000),
             'numberOfComments' => $this->faker->numberBetween($min = 0, $max = 4000),
             'user_id' => User::factory(), 

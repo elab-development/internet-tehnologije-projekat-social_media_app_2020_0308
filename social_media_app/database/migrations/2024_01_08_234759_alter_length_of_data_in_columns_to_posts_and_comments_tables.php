@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table ->string('name', 60)->change();
-            $table ->string('image', 60)->change();
+            $table ->string('image', 600)->change();
         });
 
         Schema::table('comments', function (Blueprint $table) {
