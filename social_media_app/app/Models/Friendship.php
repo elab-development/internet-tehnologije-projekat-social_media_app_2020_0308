@@ -16,11 +16,11 @@ class Friendship extends Model
 
     public function userOne()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_one_id', 'id');
     }
 
     public function userTwo()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_two_id', 'id');
     }
 }

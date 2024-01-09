@@ -53,9 +53,14 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function friendships()
+    public function friendshipsOne()
     {
-        return $this->hasMany(Friendship::class);
+        return $this->hasMany(Friendship::class, 'user_one_id', 'id');
+    }
+    
+    public function friendshipsTwo()
+    {
+        return $this->hasMany(Friendship::class, 'user_two_id', 'id');
     }
 
 }
