@@ -24,6 +24,8 @@ use App\Http\Controllers\LikeController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+Route::post('resetPassword',[AuthController::class,'resetPassword']);
+
 Route::get('users', [UserController::class, 'index']);
 
 Route::get('posts', [PostController::class, 'index']);
