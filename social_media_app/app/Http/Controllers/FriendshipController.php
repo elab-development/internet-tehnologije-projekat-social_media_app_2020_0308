@@ -10,6 +10,8 @@ use App\Http\Resources\FriendshipResource;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Auth;
+
 class FriendshipController extends Controller
 {
     //prikazi sva prijateljstva ulogovanog korisnika
