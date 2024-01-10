@@ -51,9 +51,11 @@ class CommentController extends Controller
  
      $comment->save();
 
-     $comment = Comment::findOrFail( $comment->post_id);
+     $post = Post::findOrFail( $comment->post_id);
+     $post->numberOfComments++;
+     $post->save();
  
-     return response()->json(['You have successfuly commented on the comment '.$comment->name.'!',
+     return response()->json(['You have successfuly commented on the post '.$post->name.'!',
           new CommentResource($comment)]);
      }
 
@@ -116,7 +118,12 @@ class CommentController extends Controller
         }
 
         $comment = Comment::findOrFail($id);
+        $post = Post::findOrFail( $comment->post_id);
+        $post->numberOfComments--;
+        $post->save();
         $comment->delete();
+
+
         return response()->json('You have successfuly altered your comment!');
     }
 }
