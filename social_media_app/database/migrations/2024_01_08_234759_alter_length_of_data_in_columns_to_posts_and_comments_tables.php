@@ -17,7 +17,7 @@ return new class extends Migration
         });
 
         Schema::table('comments', function (Blueprint $table) {
-            $table ->string('name', 60)->change();
+            $table ->string('text', 500)->change();
         });
     }
 
@@ -32,7 +32,7 @@ return new class extends Migration
         });
 
         Schema::table('comments', function (Blueprint $table) {
-            $table ->string('name', 10)->change();
+            $table ->string('text', 80)->change();
         });
     }
 };

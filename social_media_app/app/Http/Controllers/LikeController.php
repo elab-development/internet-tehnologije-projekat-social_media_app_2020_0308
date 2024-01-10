@@ -15,7 +15,7 @@ class LikeController extends Controller
     public function likeComment($id)
     {
         $comment= Comment::findOrFail($id);
-        $coomment->numberOfLikes++;
+        $comment->numberOfLikes++;
         $comment->save();
         return new CommentResource($comment);
     }

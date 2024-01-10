@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Comment;
+use App\Models\Post;
 use App\Http\Resources\CommentResource;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -44,16 +45,18 @@ class CommentController extends Controller
  
      $comment = new Comment();
      $comment->text = $request->text;
-     $comment->datum = Carbon::now()->format('Y-m-d H:i:s'); //trenutni datum i vreme
+     $comment->dateAndTime = Carbon::now()->format('Y-m-d H:i:s'); //trenutni datum i vreme
      $comment->numberOfLikes = 0;
      $comment->user_id = $user_id;
      $comment->post_id = $request->post_id;
- 
-     $comment->save();
 
-     $post = Post::findOrFail( $comment->post_id);
+    $post = Post::findOrFail( $comment->post_id);
      $post->numberOfComments++;
      $post->save();
+
+     $comment->save();
+
+
  
      return response()->json(['You have successfuly commented on the post '.$post->name.'!',
           new CommentResource($comment)]);
@@ -89,7 +92,7 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($id);
 
         $comment->text = $request->text;
-        $comment->datum = Carbon::now()->format('Y-m-d H:i:s'); //trenutni datum i vreme
+        $comment->dateAndTime = Carbon::now()->format('Y-m-d H:i:s'); //trenutni datum i vreme
 
 
         
@@ -124,6 +127,6 @@ class CommentController extends Controller
         $comment->delete();
 
 
-        return response()->json('You have successfuly altered your comment!');
+        return response()->json('You have successfuly deleted your comment!');
     }
 }

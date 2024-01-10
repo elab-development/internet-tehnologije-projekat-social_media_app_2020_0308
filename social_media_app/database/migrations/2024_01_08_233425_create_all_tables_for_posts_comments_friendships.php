@@ -28,7 +28,6 @@ return new class extends Migration
 
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name',10);
             $table->string('text',80);
             $table->timestamp('dateAndTime');
             $table->timestamps();
