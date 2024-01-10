@@ -20,9 +20,8 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word()." ".$this->faker->word(),
             'text' => $this->faker->sentence(),
-            'dateAndTime' => $this->faker->dateTimeBetween('-20 days', 'now'),
+            'dateAndTime' => $this->faker->dateTimeBetween('-20 days', 'now')->format('Y:m:d') . ' ' . $this->faker->time('H:i:s'),
             'numberOfLikes' => $this->faker->numberBetween($min = 0, $max = 3000),
             'user_id' => User::factory(), 
             'post_id' => Post::factory(), 

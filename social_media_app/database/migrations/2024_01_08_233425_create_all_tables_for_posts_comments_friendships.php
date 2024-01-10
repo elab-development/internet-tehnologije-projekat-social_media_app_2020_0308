@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image',10);
             $table->string('description',500);
             $table->string('location',180);
-            $table->date('dateAndTime');
+            $table->timestamp('dateAndTime');
             $table->timestamps();
         });
 
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',10);
             $table->string('text',80);
-            $table->date('dateAndTime');
+            $table->timestamp('dateAndTime');
             $table->timestamps();
         });
     }
