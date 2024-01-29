@@ -62,3 +62,7 @@
 .login-form button:hover {
     background-color: #aaa2d8; 
 }
+
+.link-black {
+    color: black;
+  }

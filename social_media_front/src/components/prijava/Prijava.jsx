@@ -43,7 +43,7 @@ const Prijava = ({ onLogin, users }) => {
         />
         <button onClick={handleLogin} className="login-form-button">Prijava</button>
 
-        <p style={{ marginTop: '10px' , color: 'purple'}}>Ako nemate nalog, kliknite <Link to="/registracija"> ovde </Link> 
+        <p style={{ marginTop: '10px' , color: 'purple'}}>Ako nemate nalog, kliknite <Link to="/registracija" className="link-black">ovde </Link>
              da se registrujete.</p>
       </div>
     </div>
