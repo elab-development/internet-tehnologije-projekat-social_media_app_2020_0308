@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useKorisnici from './useKorisnici';
 import './Korisnici.css';
+import Footer from '../footer/Footer';
 
 function Korisnici() {
   const { korisnici, loading, error } = useKorisnici('http://127.0.0.1:8000/api/users');
@@ -29,6 +30,7 @@ function Korisnici() {
   );
 
   return (
+    <>
     <div className='korisnici-page'>
       {/* Korisnici section */}
       <div className='svi-korisnici'>
@@ -53,8 +55,9 @@ function Korisnici() {
           ))}
         </ul>
       </div>
-      
     </div>
+    <Footer/>
+    </>
   );
 }
 

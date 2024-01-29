@@ -2,6 +2,7 @@ import Post from './Post';
 import './Feed.css';
 import React, { useState } from 'react';
 import usePosts from './usePosts'; 
+import Footer from '../footer/Footer';
 
 function Feed() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -44,6 +45,7 @@ function Feed() {
         ))}
       </div>
     </div>
+    <Footer/>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Pocetna.css';
+import Footer from '../footer/Footer';
 
 const Pocetna = () => {
   const [citat, setCitat] = useState(null);
@@ -19,6 +20,7 @@ const Pocetna = () => {
   }, []);
 
   return (
+    <>
     <div className='pocetna-stranica'>
     <div className="pocetna-tekst">
       <h1>Dobrodošli na našu društvenu mrežu!</h1>
@@ -35,6 +37,8 @@ const Pocetna = () => {
       </div>
     </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
