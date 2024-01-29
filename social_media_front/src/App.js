@@ -15,17 +15,17 @@ function App() {
     
     const handleLogin = (username) => {
         setLoggedInUser(username);
-        alert(`Logged in as ${username}`);
-        console.log(`Logged in as ${username}`);
+        alert(`Uspesno ste se prijavili. Vas username je: ${username}`);
+        console.log(`Uspesna prijava: ${username}`);
       };
     
     const handleRegister = (newUser) => {
         if (users.some((user) => user.username === newUser.username)) {
-          alert('Username already exists. Please choose a different one.');
+          alert('Ovaj username vec postoji, unesite drugi!');
           return;
         }
     setUsers((prevUsers) => [...prevUsers, newUser]);
-        alert('Registration successful!');
+        alert('Uspesna registracija!');
       };
 
       const handleLogout = () => {
