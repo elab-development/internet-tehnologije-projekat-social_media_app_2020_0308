@@ -3,6 +3,8 @@ import { BrowserRouter,Route,Routes, Navigate  } from 'react-router-dom';
 import React, { useState } from 'react';
 import Prijava from './components/prijava/Prijava';
 import Registracija from './components/registracija/Registracija';
+import NavBar from './components/navbar/Navbar';
+import Pocetna from './components/pocetna/Pocetna';
 
 
 function App() {
@@ -21,16 +23,19 @@ function App() {
           alert('Username already exists. Please choose a different one.');
           return;
         }
-    
-       
     setUsers((prevUsers) => [...prevUsers, newUser]);
         alert('Registration successful!');
+      };
+
+      const handleLogout = () => {
+        setLoggedInUser(null);
+        return <Navigate to="/" />;
       };
 
   return (
     <div className="App">
       <BrowserRouter>
-          <div className="App">
+      {loggedInUser && <NavBar loggedInUser={loggedInUser} handleLogout={handleLogout} />}
             <Routes>
               <Route path="/" element={ loggedInUser ? ( <Navigate to="/pocetna" /> ) 
               : (<Prijava onLogin={handleLogin} users={users} /> ) } 
@@ -38,9 +43,11 @@ function App() {
             <Route path="/registracija" element={<Registracija onRegister={handleRegister}
                    users={users} />} 
                />
+            <Route path="/pocetna" element={<Pocetna/>} />
+
       
             </Routes>
-          </div>
+          
         </BrowserRouter>
     </div>
   );
