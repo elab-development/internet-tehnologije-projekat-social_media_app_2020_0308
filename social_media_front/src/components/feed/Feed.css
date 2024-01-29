@@ -1,0 +1,31 @@
+.feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e4d6f8;
+    padding: 20px;
+  }
+  
+  .post {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .post-text {
+    margin-bottom: 10px;
+  }
+  
+
+  
+ 
+  
