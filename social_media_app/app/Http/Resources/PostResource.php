@@ -15,15 +15,15 @@ class PostResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'ID: ' => $this->resource->id,
-            'Name: ' => $this->resource->name,
-            'Image: ' => $this->resource->image,
-            'Description: ' => $this->resource->description,
-            'Location: ' => $this->resource->location,
-            'Date and time: ' => $this->resource->dateAndTime,
-            'Number of likes: ' => $this->resource->numberOfLikes,
-            'Number of comments: ' => $this->resource->numberOfComments,
-            'User who posted: ' => new UserResource($this->resource->user),
+            'id' => $this->resource->id,
+            'name' => $this->resource->name,
+            'image' => $this->resource->image,
+            'description' => $this->resource->description,
+            'location' => $this->resource->location,
+            'dateAndTime' => $this->resource->dateAndTime,
+            'numberOfLikes' => $this->resource->numberOfLikes,
+            'numberOfComments' => $this->resource->numberOfComments,
+            'user' => new UserResource($this->resource->user),
         ];
     }
 }

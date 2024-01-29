@@ -15,12 +15,12 @@ class CommentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'ID: ' => $this->resource->id,
-            'Text: ' => $this->resource->text,
-            'Number of likes: ' => $this->resource->numberOfLikes,
-            'Date and time: ' => $this->resource->dateAndTime,
-            'User who commented: ' => new UserResource($this->resource->user),
-            'Comment is on this post: ' => new PostResource($this->resource->post),
+            'id' => $this->resource->id,
+            'text' => $this->resource->text,
+            'numberOfLikes' => $this->resource->numberOfLikes,
+            'dateAndTime' => $this->resource->dateAndTime,
+            'user' => new UserResource($this->resource->user),
+            'post' => new PostResource($this->resource->post),
         ];
     }
 }

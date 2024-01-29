@@ -15,10 +15,10 @@ class FriendshipResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'ID: ' => $this->resource->id,
-            'This friendship consists of: ' =>[
-            'Friend one: ' => new UserResource($this->resource->userOne),
-            'Friend two: ' => new UserResource($this->resource->userTwo),
+            'id' => $this->resource->id,
+            'friendship' =>[
+            'userOne' => new UserResource($this->resource->userOne),
+            'userTwo' => new UserResource($this->resource->userTwo),
             ],
 
         ];
