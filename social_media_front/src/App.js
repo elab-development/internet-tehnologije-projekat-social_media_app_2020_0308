@@ -5,7 +5,7 @@ import Prijava from './components/prijava/Prijava';
 import Registracija from './components/registracija/Registracija';
 import NavBar from './components/navbar/Navbar';
 import Pocetna from './components/pocetna/Pocetna';
-
+import Feed from './components/feed/Feed';
 
 function App() {
 
@@ -44,7 +44,7 @@ function App() {
                    users={users} />} 
                />
             <Route path="/pocetna" element={<Pocetna/>} />
-
+            <Route path="/feed" element={<Feed/>} />
       
             </Routes>
           
