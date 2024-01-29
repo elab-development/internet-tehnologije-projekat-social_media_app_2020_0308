@@ -1,23 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter,Route,Routes, Navigate  } from 'react-router-dom';
+import React, { useState } from 'react';
+import Prijava from './components/prijava/Prijava';
+import Registracija from './components/registracija/Registracija';
+
 
 function App() {
+
+  const [users, setUsers] = useState([]);
+    const [loggedInUser, setLoggedInUser] = useState(null);
+    
+    const handleLogin = (username) => {
+        setLoggedInUser(username);
+        alert(`Logged in as ${username}`);
+        console.log(`Logged in as ${username}`);
+      };
+    
+    const handleRegister = (newUser) => {
+        if (users.some((user) => user.username === newUser.username)) {
+          alert('Username already exists. Please choose a different one.');
+          return;
+        }
+    
+       
+    setUsers((prevUsers) => [...prevUsers, newUser]);
+        alert('Registration successful!');
+      };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={ loggedInUser ? ( <Navigate to="/pocetna" /> ) 
+              : (<Prijava onLogin={handleLogin} users={users} /> ) } 
+              />
+            <Route path="/registracija" element={<Registracija onRegister={handleRegister}
+                   users={users} />} 
+               />
+      
+            </Routes>
+          </div>
+        </BrowserRouter>
     </div>
   );
 }
