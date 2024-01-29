@@ -1,0 +1,64 @@
+.login-form {
+    max-width: 100%;
+    padding: 180px;
+    background-image: url('https://e0.pxfuel.com/wallpapers/398/574/desktop-wallpaper-pastel-purple-aesthetic-background-laptop-novocom-top.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+.login-form-data {
+    background-color: seashell;
+    text-align: center;
+    color: purple;
+    max-width: 40%;
+    padding: 20px;
+    margin: 90px auto;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 80%;
+}
+
+.login-form h2 {
+    margin-bottom: 15px;
+    color: purple; 
+}
+
+.login-form p {
+    color: purple; 
+}
+
+.login-form label {
+    width: 50%;
+    text-align: left;
+    margin-bottom: 5px;
+    color: purple; 
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 50%;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #aaa2d8; 
+    border-radius: 3px;
+}
+
+.login-form button {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #a27eb8; 
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #aaa2d8; 
+}
