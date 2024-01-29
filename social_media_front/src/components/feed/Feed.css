@@ -5,6 +5,10 @@
     background-color: #e4d6f8;
     padding: 20px;
   }
+
+  .feed-page {
+    background-color: #e4d6f8;
+  }
   
   .post {
     background-color: white;
@@ -13,6 +17,7 @@
     width: 1000px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: purple;
   }
   
   .post-header {
@@ -25,7 +30,32 @@
     margin-bottom: 10px;
   }
   
-
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    
+  }
   
- 
+  .pagination p {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #604d9e; 
+  }
   
+  .pagination button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #aaa2d8; 
+    color: white; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button.active {
+    background-color: #604d9e; 
+  }
