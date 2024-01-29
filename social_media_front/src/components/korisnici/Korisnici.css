@@ -1,0 +1,63 @@
+.korisnici-page {
+    padding: 20px;
+    display: block;
+  }
+  
+  .korisnici-heading {
+    color: #604d9e;
+  }
+  
+  .korisnici-search {
+    margin-bottom: 10px;
+  }
+  
+  .search-input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #aaa2d8;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .korisnici-list {
+    list-style: none;
+    padding: 0;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .korisnik-item {
+    width: 200px; 
+    margin-right: 20px;
+    padding: 20px;
+    height: 50px; 
+    display: flex; 
+    align-items: center; 
+    border: #716d8a;
+  }
+ 
+  
+  .korisnik-username {
+    margin-right: 10px;
+    color: #604d9e;
+  }
+  
+  button {
+    background-color: #a27eb8;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #aaa2d8;
+  }
+  
+ 
+  
