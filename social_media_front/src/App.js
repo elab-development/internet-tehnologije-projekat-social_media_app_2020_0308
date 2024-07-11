@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      {loggedInUser && <NavBar loggedInUser={loggedInUser} handleLogout={handleLogout} />}
+    <NavBar loggedInUser={loggedInUser} handleLogout={handleLogout} /> 
             <Routes>
               <Route path="/" element={ loggedInUser ? ( <Navigate to="/pocetna" /> ) 
               : (<Prijava onLogin={handleLogin} users={users} /> ) } 

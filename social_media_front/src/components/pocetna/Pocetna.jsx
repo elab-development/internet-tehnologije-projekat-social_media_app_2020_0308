@@ -9,8 +9,10 @@ const Pocetna = () => {
   useEffect(() => {
     const fetchCitati = async () => {
       try {
-        const response = await axios.get('https://api.quotable.io/random?tags=Friendship');
-        setCitat(response.data);
+        const response = await axios.get('https://api.api-ninjas.com/v1/quotes?category=friendship', {
+          headers: { 'X-Api-Key': 'cdBp5C7hVS7gbjOonMGK5KRnvweJwu3ie2B5TQAt' }
+        });
+        setCitat(response.data[0]);  // The API returns an array of quotes
       } catch (error) {
         console.error('Došlo je do greške prilikom dohvatanja citata:', error);
       }
@@ -30,7 +32,7 @@ const Pocetna = () => {
       <h2>Neki od naših omiljenih citata o prijateljstvu:</h2>
       {citat && (
         <blockquote>
-          <p>"{citat.content}"</p>
+          <p>"{citat.quote}"</p>
           <footer>- {citat.author}</footer>
         </blockquote>
       )}
