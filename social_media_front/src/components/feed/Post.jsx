@@ -45,6 +45,11 @@ function Post({ post, loggedInUser, onDelete, onLike }) {
         )}
       </div>
       <p className="post-text">{post.description}</p>
+      {post.image && (
+        <div className="post-image">
+          <img src={post.image} alt={post.name} />
+        </div>
+      )}
       <div className="likes">
         <button onClick={handleLike} className="like-button">
           <FaThumbsUp /> {post.numberOfLikes}
