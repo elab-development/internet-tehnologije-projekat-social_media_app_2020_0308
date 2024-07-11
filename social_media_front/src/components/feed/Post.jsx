@@ -1,8 +1,9 @@
 import React from 'react';
 import './Post.css';
 import { FaThumbsUp } from 'react-icons/fa';
+import axios from 'axios';
 
-function Post({ post, loggedInUser, onDelete }) {
+function Post({ post, loggedInUser, onDelete, onLike }) {
 
   function formatDateTime(dateTimeString) {
     const dateTime = new Date(dateTimeString);
@@ -16,6 +17,20 @@ function Post({ post, loggedInUser, onDelete }) {
   }
 
   const formattedDateTime = formatDateTime(post.dateAndTime);
+
+  const handleLike = async () => {
+    try {
+      const token = sessionStorage.getItem('token');
+      await axios.post(`http://127.0.0.1:8000/api/posts/likeAPost/${post.id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      onLike(post.id);  
+    } catch (error) {
+      console.error('Error liking post:', error);
+    }
+  };
 
   return (
     <div className="post">
@@ -31,9 +46,9 @@ function Post({ post, loggedInUser, onDelete }) {
       </div>
       <p className="post-text">{post.description}</p>
       <div className="likes">
-        <p>
+        <button onClick={handleLike} className="like-button">
           <FaThumbsUp /> {post.numberOfLikes}
-        </p>
+        </button>
       </div>
     </div>
   );

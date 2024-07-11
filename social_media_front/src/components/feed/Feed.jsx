@@ -82,6 +82,16 @@ function Feed() {
     }
   };
 
+  const handleLike = (postId) => {
+    const updatedPosts = allPosts.map(post => {
+      if (post.id === postId) {
+        return { ...post, numberOfLikes: post.numberOfLikes + 1 };
+      }
+      return post;
+    });
+    setAllPosts(updatedPosts);
+  };
+
   return (
     <>
       <div className='feed-page'>
@@ -120,7 +130,7 @@ function Feed() {
         </form>
         <div className="feed">
           {displayPosts.map((post) => (
-            <Post key={post.id} post={post} loggedInUser={loggedInUser} onDelete={handleDelete} />
+            <Post key={post.id} post={post} loggedInUser={loggedInUser} onDelete={handleDelete} onLike={handleLike} />
           ))}
         </div>
         <div className="pagination">
