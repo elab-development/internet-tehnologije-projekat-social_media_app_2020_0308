@@ -14,7 +14,7 @@ const Prijava = ({ onLogin }) => {
         email: username,
         password: password
       });
-      const { access_token, user } = response.data;
+      const { 'Token: ': access_token, 'User: ': user } = response.data;
       sessionStorage.setItem('token', access_token);
       sessionStorage.setItem('user', JSON.stringify(user));
       onLogin(user);

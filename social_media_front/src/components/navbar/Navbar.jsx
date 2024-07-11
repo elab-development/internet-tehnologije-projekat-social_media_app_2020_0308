@@ -34,7 +34,7 @@ function NavBar({ loggedInUser, handleLogout }) {
         </div>
         <ul className="nav__list">
           <li className="nav__item">
-            Logovan korisnik: {loggedInUser}{' '}
+            Logovan korisnik: {loggedInUser && loggedInUser.name}{' '}
           </li>
           <li className="nav__item">
             <Link to='/pocetna'> Pocetna <RiHome4Line /> </Link>
