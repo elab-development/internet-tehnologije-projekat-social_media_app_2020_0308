@@ -12,7 +12,7 @@ const Pocetna = () => {
         const response = await axios.get('https://api.api-ninjas.com/v1/quotes?category=friendship', {
           headers: { 'X-Api-Key': 'cdBp5C7hVS7gbjOonMGK5KRnvweJwu3ie2B5TQAt' }
         });
-        setCitat(response.data[0]);  // The API returns an array of quotes
+        setCitat(response.data[0]);   
       } catch (error) {
         console.error('Došlo je do greške prilikom dohvatanja citata:', error);
       }
