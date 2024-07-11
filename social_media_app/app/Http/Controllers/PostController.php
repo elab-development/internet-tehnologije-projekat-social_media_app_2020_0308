@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use App\Models\Comment;
 use App\Http\Resources\PostResource;
 //za dateAndTime
 use Carbon\Carbon;
@@ -157,38 +158,51 @@ class PostController extends Controller
          return response()->json(['message' => 'Location successfuly altered.', new PostResource($post)]);
      }
  
-     //brisanje posta
      public function destroy($id)
      {
-        $user_id = Auth::user()->id;
-
-          $post = Post::find($id);
-          if(!$post){
-            return response()->json([
-               'message'=>'Post that you want to delete doesent exist.'
- 
-            ],404);
-          }
-
-          $post_user_id = Post::where('id', $id)->value('user_id');
-
-          if($user_id != $post_user_id){
-              return response()->json(['error' => 'You are not the one who created this post!'], 403);
-          }
- 
-          // Public storage
-          $storage = Storage::disk('public');
- 
-          // Brisanje slike iz foldera storage
-          if($storage->exists($post->image))
-              $storage->delete($post->image);
- 
-          // Brisanje Nekretnine
-          $post->delete();
- 
-          // Return Json Response
-          return response()->json([
-              'message' => "Post has successfuly been deleted."
-          ],200);
-     }
+         $user_id = Auth::user()->id;
+     
+         DB::beginTransaction();
+     
+         try {
+             $post = Post::find($id);
+             if (!$post) {
+                 return response()->json([
+                     'message' => 'Post that you want to delete does not exist.'
+                 ], 404);
+             }
+     
+             $post_user_id = Post::where('id', $id)->value('user_id');
+     
+             if ($user_id != $post_user_id) {
+                 return response()->json(['error' => 'You are not the one who created this post!'], 403);
+             }
+     
+             // Public storage
+             $storage = Storage::disk('public');
+     
+             // Brisanje slike iz foldera storage
+             if ($storage->exists($post->image))
+                 $storage->delete($post->image);
+     
+             // Brisanje komentara povezanih sa postom
+             Comment::where('post_id', $id)->delete();
+     
+             // Brisanje posta
+             $post->delete();
+     
+             DB::commit();
+     
+             // Return Json Response
+             return response()->json([
+                 'message' => "Post has successfully been deleted along with its comments."
+             ], 200);
+         } catch (\Exception $e) {
+             DB::rollBack();
+             return response()->json([
+                 'message' => 'Error occurred while deleting the post.',
+                 'error' => $e->getMessage()
+             ], 500);
+         }
+}
 }
