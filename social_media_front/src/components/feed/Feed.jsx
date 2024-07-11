@@ -10,6 +10,7 @@ function Feed() {
   const [searchQuery, setSearchQuery] = useState('');
   const [newPost, setNewPost] = useState({ name: '', description: '', image: null });
   const [allPosts, setAllPosts] = useState([]); // State for all posts
+  const loggedInUser = JSON.parse(sessionStorage.getItem('user')); // Get the logged-in user from session storage
 
   const postsPerPage = 5;
   const { posts, loading, error } = usePosts('http://127.0.0.1:8000/api/posts');
@@ -66,6 +67,21 @@ function Feed() {
     }
   };
 
+  const handleDelete = async (postId) => {
+    try {
+      const token = sessionStorage.getItem('token');
+      await axios.delete(`http://127.0.0.1:8000/api/posts/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setAllPosts(allPosts.filter(post => post.id !== postId)); // Update the local posts state
+      alert('Post successfully deleted!');
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
+  };
+
   return (
     <>
       <div className='feed-page'>
@@ -104,7 +120,7 @@ function Feed() {
         </form>
         <div className="feed">
           {displayPosts.map((post) => (
-            <Post key={post.id} post={post} />
+            <Post key={post.id} post={post} loggedInUser={loggedInUser} onDelete={handleDelete} />
           ))}
         </div>
         <div className="pagination">
