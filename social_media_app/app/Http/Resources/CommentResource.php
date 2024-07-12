@@ -18,6 +18,8 @@ class CommentResource extends JsonResource
             'id' => $this->resource->id,
             'text' => $this->resource->text,
             'numberOfLikes' => $this->resource->numberOfLikes,
+            'gif_url' => $this->resource->gif_url,
+
             'dateAndTime' => $this->resource->dateAndTime,
             'user' => new UserResource($this->resource->user),
             'post' => new PostResource($this->resource->post),

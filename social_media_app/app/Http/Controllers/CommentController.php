@@ -27,40 +27,40 @@ class CommentController extends Controller
         return new CommentResource($comments);
     }
 
-     //ostavi komentar
-     public function store(Request $request)
-     {
-
-
-     $validator = Validator::make($request->all(), [
-         'text' => 'required',
-         'post_id' => 'required',
-     ]);
- 
-     if ($validator->fails()) {
-         return response()->json($validator->errors());
-     }
-
-     $user_id = Auth::user()->id;
- 
-     $comment = new Comment();
-     $comment->text = $request->text;
-     $comment->dateAndTime = Carbon::now()->format('Y-m-d H:i:s'); //trenutni datum i vreme
-     $comment->numberOfLikes = 0;
-     $comment->user_id = $user_id;
-     $comment->post_id = $request->post_id;
-
-    $post = Post::findOrFail( $comment->post_id);
-     $post->numberOfComments++;
-     $post->save();
-
-     $comment->save();
-
-
- 
-     return response()->json(['You have successfuly commented on the post '.$post->name.'!',
-          new CommentResource($comment)]);
-     }
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'text' => 'required',
+            'post_id' => 'required',
+            'gif_url' => 'nullable|url',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+    
+        $user_id = Auth::user()->id;
+    
+        $comment = new Comment();
+        $comment->text = $request->text;
+        $comment->gif_url = $request->gif_url;
+        $comment->dateAndTime = Carbon::now()->format('Y-m-d H:i:s'); // Current date and time
+        $comment->numberOfLikes = 0;
+        $comment->user_id = $user_id;
+        $comment->post_id = $request->post_id;
+    
+        $post = Post::findOrFail($comment->post_id);
+        $post->numberOfComments++;
+        $post->save();
+    
+        $comment->save();
+    
+        return response()->json([
+            'You have successfully commented on the post ' . $post->name . '!',
+            new CommentResource($comment)
+        ]);
+    }
+    
 
 
        //azuriranje komentara
@@ -128,5 +128,11 @@ class CommentController extends Controller
 
 
         return response()->json('You have successfuly deleted your comment!');
+    }
+    // Get comments by post ID
+    public function getCommentsByPost($postId)
+    {
+        $comments = Comment::where('post_id', $postId)->get();
+        return CommentResource::collection($comments);
     }
 }

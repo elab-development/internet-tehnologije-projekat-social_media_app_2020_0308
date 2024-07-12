@@ -118,7 +118,7 @@ function Feed() {
             value={newPost.description}
             onChange={handleInputChange}
             required
-          ></textarea>
+          ></textarea><br /><br />
           <input
             type="file"
             name="image"

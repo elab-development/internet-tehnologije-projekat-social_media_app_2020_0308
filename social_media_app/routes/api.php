@@ -30,7 +30,7 @@ Route::get('users', [UserController::class, 'index']);
 
 Route::get('posts', [PostController::class, 'index']);
 Route::get('posts/{id}', [PostController::class, 'show']); 
-
+Route::get('posts/{id}/comments', [CommentController::class, 'getCommentsByPost']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('posts', [PostController::class, 'store']);
