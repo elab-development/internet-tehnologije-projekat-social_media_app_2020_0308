@@ -8,6 +8,7 @@ import Pocetna from './components/pocetna/Pocetna';
 import Feed from './components/feed/Feed';
 import Korisnici from './components/korisnici/Korisnici';
 import Statistics from './components/admin/Statistics';
+import SpisakKorisnika from './components/admin/SpisakKorisnika';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
       
 
             <Route path="/admin" element={<Statistics/>} />
+            <Route path="/spisakKorisnika" element={<SpisakKorisnika/>} />
 
             </Routes>
           

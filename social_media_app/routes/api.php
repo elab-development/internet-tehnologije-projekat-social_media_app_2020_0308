@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('posts/{id}', [PostController::class, 'destroy']); 
 
     Route::resource('comments', CommentController::class);
-
+    Route::delete('/users/{id}', [UserController::class, 'destroy']);
     Route::get('friendships/myFriends', [FriendshipController::class, 'index']);
     Route::post('friendships/makeAFriend', [FriendshipController::class, 'store']);
     Route::delete('friendships/removeAFriend/{id}', [FriendshipController::class, 'destroy']); 
