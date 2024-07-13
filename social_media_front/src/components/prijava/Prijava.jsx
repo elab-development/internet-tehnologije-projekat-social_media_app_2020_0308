@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Prijava.css';
 
 const Prijava = ({ onLogin }) => {
-  const [username, setUsername] = useState('orie89@example.net');
+  const [username, setUsername] = useState('scottie13@example.net');
   const [password, setPassword] = useState('password');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -18,6 +19,13 @@ const Prijava = ({ onLogin }) => {
       sessionStorage.setItem('token', access_token);
       sessionStorage.setItem('user', JSON.stringify(user));
       onLogin(user);
+
+      // Preusmeravanje na osnovu uloge korisnika
+      if (user.uloga === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/feed');
+      }
     } catch (error) {
       setError('Losi kredencijali za prijavu!');
     }

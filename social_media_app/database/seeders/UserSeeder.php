@@ -14,6 +14,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->times(4)->create();
+        // Kreiranje dva admin korisnika
+        User::factory()->state([
+            'uloga' => 'admin',
+        ])->count(2)->create();
+
+        // Kreiranje dva korisnika sa ulogom korisnik
+        User::factory()->state([
+            'uloga' => 'korisnik',
+        ])->count(2)->create();
     }
 }

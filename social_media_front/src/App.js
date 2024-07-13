@@ -16,9 +16,7 @@ function App() {
     const [loggedInUser, setLoggedInUser] = useState(null);
     
     const handleLogin = (username) => {
-        setLoggedInUser(username);
-        alert(`Uspesno ste se prijavili. Vas username je: ${username}`);
-        console.log(`Uspesna prijava: ${username}`);
+        setLoggedInUser(username); 
       };
     
     const handleRegister = (newUser) => {
@@ -39,6 +37,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
     <NavBar loggedInUser={loggedInUser} handleLogout={handleLogout} /> 
+      {/* za neulogovanog */}
             <Routes>
               <Route path="/" element={ loggedInUser ? ( <Navigate to="/pocetna" /> ) 
               : (<Prijava onLogin={handleLogin} users={users} /> ) } 
@@ -46,11 +45,13 @@ function App() {
             <Route path="/registracija" element={<Registracija onRegister={handleRegister}
                    users={users} />} 
                />
+
+                 {/* za korisnika */}
             <Route path="/pocetna" element={<Pocetna/>} />
             <Route path="/feed" element={<Feed/>} />
             <Route path="/korisnici" element={<Korisnici/>} />
       
-
+                  {/* za admina */}
             <Route path="/admin" element={<Statistics/>} />
             <Route path="/spisakKorisnika" element={<SpisakKorisnika/>} />
 
