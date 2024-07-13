@@ -206,4 +206,21 @@ public function store(Request $request)
             ], 500);
         }
     }
+
+    public function statistics()
+{
+    // Top tri posta sa najviše lajkova
+    $topPosts = Post::orderBy('numberOfLikes', 'desc')->take(3)->get();
+
+    // Broj postova po danima u mesecu
+    $postsByDay = Post::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
+        ->groupBy('date')
+        ->get();
+
+    return response()->json([
+        'top_posts' => PostResource::collection($topPosts),
+        'posts_by_day' => $postsByDay
+    ]);
+}
+
 }

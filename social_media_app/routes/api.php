@@ -32,7 +32,8 @@ Route::get('posts', [PostController::class, 'index']);
 Route::get('posts/{id}', [PostController::class, 'show']); 
 Route::get('posts/{id}/comments', [CommentController::class, 'getCommentsByPost']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
-
+    Route::post('posts/likeAPost/{id}', [LikeController::class, 'likePost']); 
+    Route::get('statistics', [PostController::class, 'statistics']);
     Route::post('posts', [PostController::class, 'store']);
     Route::put('posts/{id}', [PostController::class, 'update']); 
     Route::patch('posts/updateLocation/{id}', [PostController::class, 'updateLocation']);
@@ -45,7 +46,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('friendships/removeAFriend/{id}', [FriendshipController::class, 'destroy']); 
 
     Route::post('comments/likeAComment/{id}', [LikeController::class, 'likeComment']); 
-    Route::post('posts/likeAPost/{id}', [LikeController::class, 'likePost']); 
 
     Route::post('logout', [AuthController::class, 'logout']);
 });

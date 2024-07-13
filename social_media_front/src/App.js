@@ -7,6 +7,7 @@ import NavBar from './components/navbar/Navbar';
 import Pocetna from './components/pocetna/Pocetna';
 import Feed from './components/feed/Feed';
 import Korisnici from './components/korisnici/Korisnici';
+import Statistics from './components/admin/Statistics';
 
 function App() {
 
@@ -48,6 +49,9 @@ function App() {
             <Route path="/feed" element={<Feed/>} />
             <Route path="/korisnici" element={<Korisnici/>} />
       
+
+            <Route path="/admin" element={<Statistics/>} />
+
             </Routes>
           
         </BrowserRouter>
