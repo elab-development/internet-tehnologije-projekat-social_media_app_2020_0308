@@ -10,7 +10,7 @@ const Pocetna = () => {
     const fetchCitati = async () => {
       try {
         const response = await axios.get('https://api.api-ninjas.com/v1/quotes?category=friendship', {
-          headers: { 'X-Api-Key': 'cdBp5C7hVS7gbjOonMGK5KRnvweJwu3ie2B5TQAt' }
+          headers: { 'X-Api-Key': 'jcWCqSr114CjwUWVpd58L3vDj1sKV6bcdHWVk8pS' }
         });
         setCitat(response.data[0]);   
       } catch (error) {

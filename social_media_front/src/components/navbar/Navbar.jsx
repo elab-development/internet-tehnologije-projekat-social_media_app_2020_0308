@@ -27,8 +27,9 @@ function NavBar({ handleLogout }) {
       });
       sessionStorage.removeItem('token');
       sessionStorage.removeItem('user');
-      handleLogout();
       navigate('/');
+      handleLogout();
+     
     } catch (error) {
       console.error('Logout failed', error);
     }
@@ -41,11 +42,10 @@ function NavBar({ handleLogout }) {
           <h1>Drustvena mreza</h1>
         </div>
         <ul className="nav__list">
-         
           <li className="nav__item">
             <Link to='/pocetna'>Pocetna <RiHome4Line /></Link>
           </li>
-          {user && user.uloga  == 'korisnik' && (
+          {user && user.uloga === 'korisnik' && (
             <>
               <li className="nav__item">
                 <Link to='/feed'>Feed <CgFeed /></Link>
@@ -55,7 +55,7 @@ function NavBar({ handleLogout }) {
               </li>
             </>
           )}
-          {user && user.uloga == 'admin' && (
+          {user && user.uloga === 'admin' && (
             <>
               <li className="nav__item">
                 <Link to='/admin'>Statistika <CgFeed /></Link>
@@ -65,9 +65,11 @@ function NavBar({ handleLogout }) {
               </li>
             </>
           )}
-          <button className="logout-button" onClick={handleLogoutClick}>
-            Logout
-          </button>
+          {user && (
+            <button className="logout-button" onClick={handleLogoutClick}>
+              Logout
+            </button>
+          )}
         </ul>
       </nav>
     </div>

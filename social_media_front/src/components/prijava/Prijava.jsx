@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Prijava.css';
 
 const Prijava = ({ onLogin }) => {
-  const [username, setUsername] = useState('scottie13@example.net');
+  const [username, setUsername] = useState('ilene.metz@example.net');
   const [password, setPassword] = useState('password');
   const [error, setError] = useState('');
   const navigate = useNavigate();

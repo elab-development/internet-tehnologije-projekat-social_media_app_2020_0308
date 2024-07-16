@@ -8,7 +8,7 @@ function Comment({ postId, onCommentAdded }) {
   const [giphyResults, setGiphyResults] = useState([]);
 
   const handleGiphySearch = async () => {
-    const apiKey = '5wLnOkJ4USUXRJ25tA31dGdP7i2y2mhB';
+    const apiKey = '6P95N3woEkQEm74HCHKY3xaSYIXiXSJ3';
     const url = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${giphySearch}&limit=5`;
     try {
       const response = await axios.get(url);
