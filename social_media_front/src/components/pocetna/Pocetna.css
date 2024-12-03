@@ -1,0 +1,55 @@
+.pocetna-stranica {
+    background-image: url('https://i.pinimg.com/736x/ea/c1/b8/eac1b81d80719bbd59669258e8ccf6d1.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+    height: 700px;
+    padding-top: 100px;
+  }
+
+  .pocetna-tekst{
+    background: linear-gradient(to left, #604d9e, #a27eb8, #aaa2d8);
+    width: 700px;
+    opacity: 0.98;
+    color: white;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .citat {
+    background-color: rgba(213, 201, 212, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  blockquote {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  blockquote p {
+    margin-bottom: 10px;
+  }
+  
+  footer {
+    font-size: 16px;
+  }

@@ -1,0 +1,47 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Pocetna.css';
+import Footer from '../footer/Footer';
+
+const Pocetna = () => {
+  const [citat, setCitat] = useState(null);
+
+  useEffect(() => {
+    const fetchCitati = async () => {
+      try {
+        const response = await axios.get('https://api.api-ninjas.com/v1/quotes?category=friendship', {
+          headers: { 'X-Api-Key': 'jcWCqSr114CjwUWVpd58L3vDj1sKV6bcdHWVk8pS' }
+        });
+        setCitat(response.data[0]);   
+      } catch (error) {
+        console.error('Došlo je do greške prilikom dohvatanja citata:', error);
+      }
+    };
+
+    fetchCitati();
+  }, []);
+
+  return (
+    <>
+    <div className='pocetna-stranica'>
+    <div className="pocetna-tekst">
+      <h1>Dobrodošli na našu društvenu mrežu!</h1>
+      <p>Ovde možete deliti svoje misli, pregledati postove drugih korisnika i pronaći nove prijatelje.</p>
+      
+      <div className='citat'>
+      <h2>Neki od naših omiljenih citata o prijateljstvu:</h2>
+      {citat && (
+        <blockquote>
+          <p>"{citat.quote}"</p>
+          <footer>- {citat.author}</footer>
+        </blockquote>
+      )}
+      </div>
+    </div>
+    </div>
+    <Footer/>
+    </>
+  );
+};
+
+export default Pocetna;
